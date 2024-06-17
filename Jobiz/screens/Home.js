@@ -4,11 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  TextInput,
-  Button,
-  FlatList,
-  SectionList,
   Platform,
   Image,
   KeyboardAvoidingView,
@@ -17,7 +12,8 @@ import Popular from "../components/Popular.js";
 import Featured from "../components/Featured.js";
 import Search from "../components/Search.js";
 
-const Home = () => {
+export default Home = ({ route }) => {
+
   const [featured, setfeatured] = useState([
     {
       key: "1",
@@ -49,10 +45,10 @@ const Home = () => {
     >
       <View style={styles.heading}>
         <View>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}>Hello, Devs</Text>
-          <Text style={styles.email}>{data.email}</Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold" }}>{name}</Text>
+          <Text style={styles.email}>{email}</Text>
         </View>
-        <Image style={styles.devIcon} source={require("")} />
+        <Image style={styles.devIcon} source={""} />
       </View>
       <Search />
       <Featured featured={featured} />
@@ -91,5 +87,3 @@ const styles = StyleSheet.create({
     color: "#8B9467",
   },
 });
-
-export default Home;

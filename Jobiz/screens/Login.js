@@ -1,9 +1,22 @@
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  Touchable,
+  TouchableOpacity,
+  Image,
+  View,
+} from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const Login = () => {
+export default Login = ({ navigation }) => {
+  const [email, setEmail] = useState("yaw@gmail.com");
+  const [name, setName] = useState("Yaw");
+
   return (
-    <>
+    <View>
       <View style={styles.container}>
         <Text>Jobizz</Text>
         <View>
@@ -14,20 +27,28 @@ const Login = () => {
         <View sytle={styles.loginInputs}>
           <TextInput
             style={styles.input}
-            placeholder="Email"
-            keyboardType="email-address"
+            placeholder="Name"
+            value={name}
+            onChangeText={(text) => setName(text)}
             autoCapitalize="none"
             autoCorrect={false}
           />
           <TextInput
             style={styles.input}
-            placeholder="password"
-            secureTextEntry={true}
+            placeholder="Email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
           />
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.button}>Log in</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate("Home", { email, name });
+            }}
+          >
+            <Text style={styles.buttonText}>Log in</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.socialogin}>
@@ -36,21 +57,24 @@ const Login = () => {
           <View style={styles.line} />
         </View>
         <View style={styles.socialicons}>
-        <TouchableOpacity style={styles.socialButton}>
-          <Icon name="apple" size={30} color="#000" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <Icon name="google" size={30} color="#DB4437" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <Icon name="facebook" size={30} color="#3b5998" />
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <Icon name="apple" size={30} color="#000" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <Icon name="google" size={30} color="#DB4437" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <Icon name="facebook" size={30} color="#3b5998" />
+          </TouchableOpacity>
         </View>
-            <Text>Haven't got an account <TouchableOpacity> <Text style={styles.registerText}></Text>Register </TouchableOpacity></Text>
+        <Text>
+          Haven't got an account
+          <TouchableOpacity>
+            <Text style={styles.registerText}>Register</Text>
+          </TouchableOpacity>
+        </Text>
       </View>
-
-      <StatusBar style="auto" />
-    </>
+    </View>
   );
 };
 
@@ -59,34 +83,52 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wave: {
-    // Example style for the Image
     width: 100,
     height: 50,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   loginInputs: {
-    // Style for the login inputs container
     marginTop: 20,
     marginBottom: 20,
   },
   input: {
-    // Style for each TextInput
     height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,
   },
   button: {
-    // Example style for a login button, assuming you'll add one
-    alignItems: 'center',
-    backgroundColor: '#007BFF',
+    alignItems: "center",
+    backgroundColor: "#007BFF",
     padding: 10,
     marginTop: 10,
   },
   buttonText: {
-    // Style for the text inside the button
-    color: 'white',
+    color: "white",
+  },
+  socialogin: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 20,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "gray",
+    marginHorizontal: 10,
+  },
+  socialicons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20,
+  },
+  socialButton: {
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  registerText: {
+    color: "#007BFF",
   },
 });
-
-export default Login;

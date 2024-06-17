@@ -18,12 +18,18 @@ export default function Search() {
   return (
     <View style={styles.container}>
       <View style={styles.searchSection}>
-        <Image style={styles.searchIcon} source={require("../assets/Vector.png")}/>
-        <TextInput style={styles.searchInput} placeholder="Search" />
+        <Image style={styles.searchIcon} source={""} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search a job or position"
+        />
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => console.log('Search pressed')}>
-       <Image style={styles.buttonText} source={require("../assets/Filter.png")}/>
-    </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => console.log("Search pressed")}
+      >
+        <Image style={styles.buttonText} source={""} />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -32,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     width: "90%",
     height: "auto",
-    padding:0,
+    padding: 0,
     backgroundColor: "#F7F0E8",
     alignItems: "center",
     justifyContent: "center",
@@ -66,29 +72,28 @@ const styles = StyleSheet.create({
     left: -25,
   },
   socialogin: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     marginVertical: 20,
   },
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: 'gray',
+    backgroundColor: "gray",
     marginHorizontal: 10,
   },
   socialicons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
     marginTop: 20,
   },
   socialButton: {
     padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   registerText: {
-    color: '#007BFF', // Example color for the register text
-  }, 
-  
+    color: "#007BFF", // Example color for the register text
+  },
 });

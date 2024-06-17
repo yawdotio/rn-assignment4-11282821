@@ -12,23 +12,29 @@ import {
   Image,
 } from "react-native";
 
-export default function Featured({ categories }) {
+export default function Featured({ featured }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Categories</Text>
+      <View sytle={styles.heading}>
+      <Text style={styles.title}>Featured</Text>
+      <Text style={styles.seeAll}>See all</Text>
+      </View>
       <FlatList
         style={styles.liststyle}
-        data={categories}
+        data={featured}
         keyExtractor={(item) => item.key}
         horizontal={true}
         renderItem={({ item }) => (
-          <View style={styles.categoryCard}>
+          <View style={styles.jobCard}>
             <Image
-              style={styles.categoryIcon}
+              style={styles.companyIcon}
               source={item.imagesrc}
               resizeMode="cover"
             />
-            <Text style={styles.itemText}>{item.title}</Text>
+            <Text style={styles.jobTitle}>{item.title}</Text>
+            <Text sytle={styles.company}>{item.comapany}</Text>
+            <Text styles={styles.salary}>{item.salary}</Text>
+            <Text style={styles.location}>{item.location}</Text>
           </View>
         )}
       />
@@ -51,9 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     padding: 5,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
-  categoryIcon: {
+  companyIcon: {
     width: 165,
     height: 172,
     padding: 0,
@@ -63,7 +69,7 @@ const styles = StyleSheet.create({
     position: "relative",
     bottom: -26,
   },
-  categoryCard: {
+  jobCard: {
     margin: 0,
     marginHorizontal: 5,
     padding: 0,
@@ -75,13 +81,22 @@ const styles = StyleSheet.create({
     width: 180,
     height: 205,
   },
-  itemText: {
+  jobTitle: {
     fontSize: 15,
     fontWeight: "bold",
     position: "relative",
     top: -170,
     right: 40,
     marginBottom: 0,
+  },
+  company: {
+
+  },
+  salary: {
+
+  },
+  location: {
+
   },
   liststyle: {
     position: "relative",
@@ -91,5 +106,4 @@ const styles = StyleSheet.create({
     margin: 0,
     marginBottom: 35,
   },
-
 });
