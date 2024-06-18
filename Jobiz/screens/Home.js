@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,13 @@ import Popular from "../components/Popular.js";
 import Featured from "../components/Featured.js";
 import Search from "../components/Search.js";
 
-export default Home = ({ route }) => {
+export default Home = ({ route , navigation }) => {
+  const {email, name} = route.params;
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
 
   const [featured, setfeatured] = useState([
     {
@@ -61,29 +67,15 @@ export default Home = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F7F0E8",
-    alignItems: "center",
-    position: "relative",
-    top: 0,
-    height: 900,
-    paddingHorizontal: 12,
+    backgroundColor: "#F5F5F5",
+    
   },
   heading: {
     width: "90%",
-    position: "relative",
-    top: -180,
-    flex: 1,
-    alignItems: "flex-end",
-    flexDirection: "row",
-    marginTop: 0,
   },
   devIcon: {
-    position: "relative",
-    right: -91,
-    top: -19,
+    
   },
   email: {
-    fontSize: 18,
-    color: "#8B9467",
   },
 });

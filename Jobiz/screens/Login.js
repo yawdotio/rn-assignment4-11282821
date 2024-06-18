@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -12,18 +12,22 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 
 export default Login = ({ navigation }) => {
-  const [email, setEmail] = useState("yaw@gmail.com");
-  const [name, setName] = useState("Yaw");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
 
   return (
-    <View>
       <View style={styles.container}>
-        <Text>Jobizz</Text>
-        <View>
-          <Text>Welcome Back</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Jobizz</Text>
+        <View style={styles.greeting}>
+          <Text style={{fontSize: 30, fontWeight:"bold"}}>Welcome Back 👋</Text>
           <Image style={styles.wave} />
+          <Text style={{color: "#AFB0B6"}}>Let's log in. Apply to jobs</Text>
         </View>
-        <Text>Let's log in. Apply to jobs</Text>
         <View sytle={styles.loginInputs}>
           <TextInput
             style={styles.input}
@@ -53,7 +57,7 @@ export default Login = ({ navigation }) => {
         </View>
         <View style={styles.socialogin}>
           <View style={styles.line} />
-          <Text> or continue with</Text>
+          <Text style={{color: "#AFB0B6"}}> Or continue with</Text>
           <View style={styles.line} />
         </View>
         <View style={styles.socialicons}>
@@ -67,68 +71,96 @@ export default Login = ({ navigation }) => {
             <Icon name="facebook" size={30} color="#3b5998" />
           </TouchableOpacity>
         </View>
-        <Text>
-          Haven't got an account
+        <Text style={styles.noAccount}>
+          Haven't got an account?
           <TouchableOpacity>
             <Text style={styles.registerText}>Register</Text>
           </TouchableOpacity>
         </Text>
       </View>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'left',
+    marginHorizontal: 20,
+    marginTop: 120,
+    backgroundColor: "#f5f5f5"
+  },
+  greeting: {
+    alignItems: "left",
+    justifyContent: "center",
+    marginVertical: 1,
+    marginBottom: 50,
   },
   wave: {
-    width: 100,
-    height: 50,
-    resizeMode: "contain",
+    
   },
   loginInputs: {
-    marginTop: 20,
-    marginBottom: 20,
+
   },
   input: {
-    height: 40,
-    margin: 12,
+    height: 55,
+    borderColor: '#AFB0B6',
     borderWidth: 1,
-    padding: 10,
+    borderRadius: 10,
+    backgroundColor: '#f5f5f5',
+    marginVertical: 5,
+    paddingHorizontal:6,
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#007BFF",
-    padding: 10,
-    marginTop: 10,
+    height: 50,
+    backgroundColor: '#356899',
+    borderRadius: 10,
+    marginVertical: 10,
   },
   buttonText: {
-    color: "white",
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingVertical: 10,
   },
   socialogin: {
-    flexDirection: "row",
+    height: 35,
+    flexDirection: 'row',
     alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 20,
+    marginTop: 55,
   },
+
   line: {
-    flex: 1,
-    height: 1,
-    backgroundColor: "gray",
-    marginHorizontal: 10,
+  flex: 1,
+   height: 1,
+   borderWidth: 1,
+   borderColor: '#AFB0B6',
+   backgroundColor: '#AFB0B6',
+   borderRadius: 10,
   },
   socialicons: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 20,
+    color: "#AFB0B6",
+    marginTop: 50,
+
   },
   socialButton: {
-    padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  noAccount: {
+    flexDirection: 'row',
+    alignItems: "right",
+    margin: "auto",
+    color: "#AFB0B6",
   },
   registerText: {
-    color: "#007BFF",
+    alignItems: "center",
+    position: "relative",
+    marginVertical: "auto",
+    color: "#356899",
+    top: 5,
+    right: -10,
+
   },
 });
