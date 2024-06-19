@@ -1,5 +1,4 @@
 # rn-assignment4-11282821
-Third assignment for mobile app development
 
 This repository contains the fourth assignment for mobile app development. The main entry point of the application is `App.js`. It is a simple UI for a job marketing mobile application built with react.
 
