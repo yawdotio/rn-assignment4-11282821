@@ -18,7 +18,10 @@ export default function Search() {
   return (
     <View style={styles.container}>
       <View style={styles.searchSection}>
-        <Image style={styles.searchIcon} source={""} />
+        <Image
+          style={styles.searchIcon}
+          source={require("../assets/searchicon.png")}
+        />
         <TextInput
           style={styles.searchInput}
           placeholder="Search a job or position"
@@ -28,7 +31,12 @@ export default function Search() {
         style={styles.button}
         onPress={() => console.log("Search pressed")}
       >
-        <Image style={styles.buttonText} source={""} />
+        <View style={styles.buttonBackround}>
+          <Image
+            style={styles.filterIcon}
+            source={require("../assets/menu.png")}
+          />
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -36,64 +44,48 @@ export default function Search() {
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
-    height: "auto",
+    height: 50,
     padding: 0,
-    backgroundColor: "#F7F0E8",
+    backgroundColor: "#F5F5F5",
     alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
-    top: -165,
+    justifyContent: "space-between",
     flexDirection: "row",
-    marginHorizontal: 15,
+    marginVertical: 15,
   },
   searchSection: {
+    width: "75%",
+    height: "100%",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    backgroundColor: "#fff",
-    width: "82%",
-    borderRadius: 20,
-    position: "relative",
-    left: -15,
+    backgroundColor: "#F2F2F3",
+    borderWidth: 1,
+    borderColor: "#95969D",
+    borderRadius: 17,
   },
   searchIcon: {
-    padding: 10,
-    postion: "relative",
-    left: -25,
+    height: 25,
+    width: 25,
   },
   searchInput: {
-    width: "70%",
-    padding: 10,
-    backgroundColor: "#fff",
-    color: "black",
-    borderRadius: 20,
-    postion: "relative",
-    left: -25,
-  },
-  socialogin: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 20,
-  },
-  line: {
     flex: 1,
-    height: 1,
-    backgroundColor: "gray",
-    marginHorizontal: 10,
+    backgroundColor: "#F2F2F3",
+    borderRadius: 10,
+    paddingLeft: 10,
   },
-  socialicons: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 20,
+  filterIcon: {
+    margin: "auto",
+    width: "95%",
+    height: "89%",
+    resizeMode: "contain",
   },
-  socialButton: {
-    padding: 10,
+  buttonBackround: {
+    backgroundColor: "#F2F2F3",
+    width: 50,
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
-  },
-  registerText: {
-    color: "#007BFF", // Example color for the register text
+    marginHorizontal: 10,
+    borderRadius: 10,
   },
 });

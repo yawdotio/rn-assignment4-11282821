@@ -15,9 +15,9 @@ import {
 export default function Featured({ featured }) {
   return (
     <View style={styles.container}>
-      <View sytle={styles.heading}>
-      <Text style={styles.title}>Featured</Text>
-      <Text style={styles.seeAll}>See all</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Featured Jobs</Text>
+        <Text style={styles.seeAll}>See all</Text>
       </View>
       <FlatList
         style={styles.liststyle}
@@ -25,15 +25,15 @@ export default function Featured({ featured }) {
         keyExtractor={(item) => item.key}
         horizontal={true}
         renderItem={({ item }) => (
-          <View style={styles.jobCard}>
+          <View style={[styles.jobCard, { backgroundColor: item.color }]}>
             <Image
               style={styles.companyIcon}
-              source={item.imagesrc}
-              resizeMode="cover"
+              source={item.icon}
+              resizeMode="contain"
             />
             <Text style={styles.jobTitle}>{item.title}</Text>
-            <Text sytle={styles.company}>{item.comapany}</Text>
-            <Text styles={styles.salary}>{item.salary}</Text>
+            <Text style={styles.company}>{item.company}</Text>
+            <Text style={styles.salary}>{item.salary}</Text>
             <Text style={styles.location}>{item.location}</Text>
           </View>
         )}
@@ -44,66 +44,75 @@ export default function Featured({ featured }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#F7F0E8",
-    alignItems: "right",
-    justifyContent: "center",
-    marginTop: -95,
-    width: "95%",
-    position: "relative",
-    top: -70,
+    height: 225,
+    flexDirection: "column",
   },
+
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: "20%",
+    width: "100%",
+    padding: 10,
+  },
+
   title: {
-    fontSize: 20,
     fontWeight: "bold",
-    padding: 5,
-    paddingBottom: 10,
   },
+  seeAll: {
+    fontSize: 12,
+    color: "#AFB0B6",
+  },
+
   companyIcon: {
-    width: 165,
-    height: 172,
-    padding: 0,
-    margin: 0,
-    borderWidth: 0,
-    backgroundColor: "transparent",
+    width: 40,
+    height: 40,
     position: "relative",
-    bottom: -26,
+    top: 20,
+    left: 20,
+    borderRadius: 3,
+    backgroundColor: "white",
   },
   jobCard: {
-    margin: 0,
-    marginHorizontal: 5,
-    padding: 0,
-    backgroundColor: "#fff",
-    borderWidth: 0,
+    width: 250,
     borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    width: 180,
-    height: 205,
+    marginHorizontal: 5,
   },
   jobTitle: {
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: "bold",
+    width: "auto",
+    color: "white",
     position: "relative",
-    top: -170,
-    right: 40,
-    marginBottom: 0,
+    top: -20,
+    left: 70,
   },
   company: {
-
+    fontSize: 12,
+    width: 90,
+    color: "white",
+    position: "relative",
+    top: -20,
+    left: 70,
   },
   salary: {
-
+    fontSize: 12,
+    width: 70,
+    color: "white",
+    position: "relative",
+    top: 60,
+    left: 20,
   },
   location: {
-
+    fontSize: 12,
+    color: "white",
+    width: 90,
+    position: "relative",
+    top: 40,
+    left: 125,
   },
   liststyle: {
-    position: "relative",
-    top: -5,
-    paddingBottom: -50,
-    borderWidth: 0,
-    margin: 0,
-    marginBottom: 35,
+  borderRadius: 20,
   },
 });

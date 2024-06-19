@@ -22,10 +22,9 @@ export default Login = ({ navigation }) => {
 
   return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Jobizz</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold", color: "#356899" }}>Jobizz</Text>
         <View style={styles.greeting}>
           <Text style={{fontSize: 30, fontWeight:"bold"}}>Welcome Back 👋</Text>
-          <Image style={styles.wave} />
           <Text style={{color: "#AFB0B6"}}>Let's log in. Apply to jobs</Text>
         </View>
         <View sytle={styles.loginInputs}>
@@ -86,8 +85,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'left',
-    marginHorizontal: 20,
-    marginTop: 120,
+    paddingHorizontal: 20,
+    paddingTop: 120,
     backgroundColor: "#f5f5f5"
   },
   greeting: {
@@ -95,9 +94,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginVertical: 1,
     marginBottom: 50,
-  },
-  wave: {
-    
   },
   loginInputs: {
 

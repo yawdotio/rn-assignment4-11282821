@@ -12,11 +12,13 @@ import {
   Image,
 } from "react-native";
 
-
 export default function Popular({ popular }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Ongoing</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Popular</Text>
+        <Text style={styles.seeAll}>See all</Text>
+      </View>
       <FlatList
         data={popular}
         keyExtractor={(item) => item.key}
@@ -24,12 +26,12 @@ export default function Popular({ popular }) {
           <View style={styles.jobCard}>
             <Image
               style={styles.companyIcon}
-              source={item.imagesrc}
-              resizeMode="cover"
+              source={item.icon}
+              resizeMode="contain"
             />
             <Text style={styles.jobTitle}>{item.title}</Text>
-            <Text sytle={styles.company}>{item.comapany}</Text>
-            <Text styles={styles.salary}>{item.salary}</Text>
+            <Text style={styles.company}>{item.company}</Text>
+            <Text style={styles.salary}>{item.salary}/y</Text>
             <Text style={styles.location}>{item.location}</Text>
           </View>
         )}
@@ -40,60 +42,76 @@ export default function Popular({ popular }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#F7F0E8",
-    alignItems: "right",
-    justifyContent: "center",
-    marginTop: -95,
-    width: "95%",
-    position: "relative",
-    top: -70,
+    flexDirection: "column",
+    height: 330,
   },
+
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: "20%",
+    width: "100%",
+    padding: 10,
+  },
+
   title: {
-    fontSize: 20,
     fontWeight: "bold",
-    padding: 5,
-    paddingBottom: 10,
   },
+  seeAll: {
+    fontSize: 12,
+    color: "#AFB0B6",
+  },
+
   companyIcon: {
-    width: 165,
-    height: 172,
-    padding: 0,
-    margin: 0,
-    borderWidth: 0,
-    backgroundColor: "transparent",
+    width: 40,
+    height: 40,
     position: "relative",
-    bottom: -26,
+    top: 20,
+    left: 20,
+    borderRadius: 40,
   },
   jobCard: {
-    margin: 0,
-    marginHorizontal: 5,
-    padding: 0,
-    backgroundColor: "#fff",
-    borderWidth: 0,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    width: 180,
-    height: 205,
+    width: "100%",
+    height: 80,
+    borderRadius: 20,
+    backgroundColor: "#FFFFFF",
+    marginVertical: 2,
   },
   jobTitle: {
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: "bold",
+    width: "auto",
+    color: "black",
     position: "relative",
-    top: -170,
-    right: 40,
-    marginBottom: 0,
+    top: -20,
+    left: 70,
   },
-  company: {},
-  salary: {},
-  location: {},
-  liststyle: {
+  company: {
+    fontSize: 12,
+    width: 90,
+    color: "#AFB0B6",
     position: "relative",
-    top: -5,
-    paddingBottom: -50,
-    borderWidth: 0,
-    margin: 0,
-    marginBottom: 35,
+    top: -20,
+    left: 70,
   },
+  salary: {
+    fontSize: 12,
+    width: 90,
+    textAlign: "right",
+    color: "black",
+    position: "relative",
+    top: -60,
+    left: 220,
+  },
+  location: {
+    fontSize: 10,
+    width: 90,
+    textAlign: "right",
+    color: "#AFB0B6",
+    position: "relative",
+    top: -55,
+    left: 220,
+  },
+  liststyle: {},
 });
